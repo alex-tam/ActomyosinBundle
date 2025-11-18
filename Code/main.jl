@@ -42,12 +42,11 @@ function run_simulations()
     gr() # Load GR plotting back-end
     default(titlefont = (14, "Computer Modern"), guidefont = (18, "Computer Modern"), tickfont = (14, "Computer Modern")) # Plot settings
     ##### Paremeters to simulate #####
-    # params = [0, 0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20] # Vector of parameter values to simulate
-    params = [0.0, 0.04]
+    params = [0, 0.02, 0.04, 0.06, 0.08, 0.10, 0.12, 0.14, 0.16, 0.18, 0.20] # Vector of parameter values to simulate
     ##### Loop over parameter values #####
     for par in params 
         ##### Set parameters #####
-        parN = Numerical_Parameters(mechanics = true, nTrials = 2, nT = 11) # Initialise struct of numerical parameters
+        parN = Numerical_Parameters(mechanics = true) # Initialise struct of numerical parameters
         parA = Actin_Properties(k_uniform = par, k_branching = 0.0, k_bias = 0.0, k_t = 0.0) # Initialise struct of actin filament properties
         parM = Myosin_Properties() # Initialise struct of myosin motor properties
         writedlm("t.csv", (0:parN.nT-1).*parN.dt) # Output vector of discretised time
